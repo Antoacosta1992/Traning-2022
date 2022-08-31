@@ -1,0 +1,124 @@
+/*
+####### SELECTORES #######
+*/
+
+/*Selector universal*/
+*{
+    font-family:Arial, Helvetica, sans-serif;
+}
+/* SELECTO DE ETIQUETA*/
+h1{
+   background: brown;
+   color: white;
+   padding: 5px;
+}
+a{
+  font-size: 18px;
+  color: green;
+  text-decoration: none; 
+}
+
+footer a{
+    color: blueviolet;
+}
+
+/*SELECTOR DE ID (identificador)*/
+#descripcion{
+    border: 3px solid rgb(178, 184, 70);
+    padding: 15px;
+}
+
+#Titulo{
+    background: darkgrey;
+    border: 6px dashed white;
+}
+
+/* SELECTOR DE CLASE */
+.parrafo{
+    font-style: italic;
+    /*text-decoration: underline; le quita el subrayado*/
+    font-weight: bold;
+    color: darkcyan;
+}
+/*aca puedo compartir el mismo estilo tanto en el 1 como en el 2*/
+.parrafo1, .parrafo3{
+    background-color: antiquewhite;
+    color: darkcyan;
+    padding: 10px;
+}
+/*pero si quiero cambiar el estilo del parrafo3*/
+.parrafo3{
+    background-color:olive ;
+    color:wheat;
+}
+/* SELECTOR DE ATRIBUTO*/
+/*Selecciono la etiqueta Form y aplicar estilos css*/
+#usuario form {
+    border: 5px solid brown;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 20px;
+}
+/*Si quiero que cada uno de los elementos esten
+todos  en una lista, le voy a dar un un estilo general
+a todos los elementos del formulario con el asterisco*/
+
+#usuario form *{
+    display: block;
+}
+/*La regla Display me permite que los elementos se comporten 
+como texto o como elemento en linea, uno al lado del otro*/
+
+input[type="text"]{
+    margin-bottom: 15px;
+    padding: 5px;
+    width: 100px;
+}
+/*Para dar unos estilos en concreto a unos elementos
+ por su atributo como en el caso de arriba, el IMNPUT es el
+ selector de atributo; con los corchetes puede seleccionar 
+ cierto atributo type="text")*/
+ /*Podria aplicarle estos estilos a otras cosas poniendo una coma después
+ del corchete o facilmente creando otro Input*/
+
+ input[type="submit"]{
+    background: yellow;
+    color: black;
+    padding: 15px;
+    font-size: 10px;
+    text-transform: uppercase;
+    border: 1px solid black;
+    cursor: pointer;
+
+ }
+ /*Con sudmit le damos un estilo al boton agregandole color,tamaño,letra*/
+ /*Con la propiedad Cursor puedo convertir al puntero en mano cuando se
+ acerque al boton*/
+
+ /* SELECTORES HIJO */
+ /*Si tengo una ul que es una lista en HTML y solamente quiero darle unos estilos CSS 
+ a los primeros elementos que tenga que tenga dentro de esa lista porque a lo mejor 
+ tengo más elementos, por ejemplo en una sublista*/
+
+#menu > li > a{
+    font-size: 18px;
+    color: orange;
+    text-decoration: none; 
+ }
+/*Si yo quiero ponerle solamente naranja solo a los prieros elementos
+ menu li> a>, así solo se nos marcan los elementos que estas justo despues
+ de cada elemento, en este caso el menu.El selector hijo aplica el estilo
+ a esos elementos que esten después de la etiqueta  <ul id="menu">*/ 
+
+ /*PRIORIDADl: le da mas prioridad a los estilos que estan mas abajo,
+ cuanto mas especifica es la regla mas prioridad tiene*/
+ 
+ #saludo h1{
+    background: brown;
+ }
+ /*La regla de arriba es mas especifica por lo tanto le va a dar prioridad*/
+ h1{
+    background: purple;
+ }
+ /*Pero si le pongo la propiedad -!important- le va a dar la maxima prioridad
+ a tal propiedad*/
