@@ -6,13 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  showSecret = false;
-  log = [];
+  loadedFeature = 'recipe';
 
-  onToggleDetails(){
-    this.showSecret = !this.showSecret;
-    this.log.push(this.log.length + 1)
+  onNavigate(feature: string) {
+    this.loadedFeature = feature;
   }
-  
 }
-
