@@ -8,9 +8,11 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   @ViewChild('form') signupForm: NgForm;
+  @ViewChild('taskForm') MyTaskForm: NgForm;
   defaultQuestion = 'pet';
-  answer = '';
-  genders = ['male', 'female', 'non binary'];
+  subscriptionType: string = 'pet';
+  answer: string ='';
+  genders: string [] = ['male', 'female'];
   user = {
     username: '',
     email: '',
@@ -18,10 +20,16 @@ export class AppComponent {
     answer: '',
     gender: ''
   };
-  submitted = true;
+  submitted: boolean = true;
+  submittedTask: boolean = false;
+  passwordTaskSelected: string = '';
+  emailTaskSelected: string = '';
+  subscriptionTaskSelected: string = '';
   
   suggestUserName() {
     const suggestedName = 'Superuser';
+
+     //Para SOBRESCRIBIR TODO el FORMULARIO
     // this.signupForm.setValue({
     //     userData: {
     //         username: suggestedName,
@@ -34,20 +42,32 @@ export class AppComponent {
         userData: {
             username: suggestedName
         }
-    });
+    })
   }
-
+//PARA SOBREESCRIBIR solo lo que dicto.
 //   onSubmit(form: NgForm) {
 //     console.log(form);
 //   }
 
-  onSubmit() {
-    this.user.username = this.signupForm.value.userData.username;
-    this.user.email = this.signupForm.value.userData.email;
-    this.user.secretQuestion = this.signupForm.value.secret;
-    this.user.answer = this.signupForm.value.questionAnswer;
-    this.user.gender = this.signupForm.value.gender;
+submitForm() {
+  console.log(this.signupForm);
+  this.submitted = !this.submitted;
+  this.user.username = this.signupForm.value.userData.username;
+  this.user.email = this.signupForm.value.userData.email;
+  this.user.secretQuestion = this.signupForm.value.secret;
+  this.user.answer = this.signupForm.value.questionAnswer;
+  this.user.gender = this.signupForm.value.gender;
 
-    this.signupForm.reset();
-  }
+  this.signupForm.reset();
+}
+submitTaskForm() {
+  console.log(this.MyTaskForm.value.emailTask);
+  console.log(this.MyTaskForm.value.password);
+  console.log(this.MyTaskForm.value.subscription);
+  this.passwordTaskSelected = this.MyTaskForm.value.password;
+  this.subscriptionTaskSelected = this.MyTaskForm.value.subscription;
+  this.emailTaskSelected = this.MyTaskForm.value.emailTask;
+  this.submittedTask = true;
+  this.MyTaskForm.reset();
+}
 }
