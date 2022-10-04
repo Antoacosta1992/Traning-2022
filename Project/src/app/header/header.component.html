@@ -10,15 +10,15 @@
       <ul class="nav navbar-nav">
     
         <li routerLinkActive="active">
-          <a routerLinkActive routerLink="/auth">Authenticate</a>
+          <a routerLinkActive routerLink="/auth" *ngIf="!isAuthenticated">Authenticate</a>
         </li>
-        <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
+        <li routerLinkActive="active"><a routerLink="/recipes" *ngIf="isAuthenticated">Recipes</a></li>
         <li routerLinkActive="active">
           <a routerLinkActive routerLink="/shopping-list">Shopping List</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" appDropdown>
+        <li class="dropdown" appDropdown *ngIf="isAuthenticated"> 
           <a style="cursor: pointer" class="dropdown-toggle" role="button"
             >Manage Data <span class="caret"></span
           ></a>
@@ -29,6 +29,11 @@
             <li>
               <a style="cursor: pointer" (click)="onFetchData()">Fetch Data</a>
             </li>
+            <li *ngIf="isAuthenticated">
+
+            <a class="cursor-pointer" (click)="logout()" style="cursor: pointer;">Logout</a>
+
+          </li>l
           </ul>
         </li>
       </ul>
